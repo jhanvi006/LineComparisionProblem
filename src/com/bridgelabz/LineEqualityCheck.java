@@ -3,38 +3,45 @@ package com.bridgelabz;
 import java.util.Objects;
 import java.util.Scanner;
 
+class Point{
+    private int x, y;
+    Point(int px, int py) {
+        this.x = px;
+        this.y = py;
+    }
+    public double getX() {
+        return x;
+    }
+    public double getY() {
+        return y;
+    }
+    public String calculateLineLength(Point p){
+        double length = Math.sqrt((this.getX() - p.getX()) * (this.getX() - p.getX())
+                + (this.getY() - p.getY()) * (this.getY() - p.getY()));
+        String lineLength = Double.toString(length);
+        return lineLength;
+    }
+}
 public class LineEqualityCheck {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+        System.out.println("Welcome to Line Comparison Computation Program.");
 
-        //line 1
-        //take co-ordinate values of point 1 from user
-        System.out.println("Enter x and y coordinates of point 1: ");
-        int x1 = sc.nextInt();
-        int y1 = sc.nextInt();
-        //take co-ordinate values of point 2 from user
-        System.out.println("Enter x and y coordinates of point 2: ");
-        int x2 = sc.nextInt();
-        int y2 = sc.nextInt();
+        Point p1 = new Point(1, 1);
+        Point p2 = new Point(5, 5);
+        Point p3 = new Point(2,2);
+        Point p4 = new Point(6,5);
 
-        //line 2
-        //take co-ordinate values of point 1 from user
-        System.out.println("Enter x and y coordinates of point 1: ");
-        int x3 = sc.nextInt();
-        int y3 = sc.nextInt();
-        //take co-ordinate values of point 2 from user
-        System.out.println("Enter x and y coordinates of point 2: ");
-        int x4 = sc.nextInt();
-        int y4 = sc.nextInt();
+        //calculate length of line1 from point p1 to p2
+        String length1 = p1.calculateLineLength(p2);
+        //calculate length of line2 from point p3 to p4
+        String length2 = p3.calculateLineLength(p4);
 
-        //calculate length of line1 between point 1 and point 2
-        String length1 = Double.toString(Math.sqrt(Math.pow(x2-x1,2)+Math.pow(y2-y1,2)));
-        //calculate length of line1 between point 1 and point 2
-        String length2 = Double.toString(Math.sqrt(Math.pow(x4-x3,2)+Math.pow(y4-y3,2)));
-
-        if (length2.equals(length2))
-            System.out.println("Two lines are equal.");
+        compareLineLength(length1, length2);
+    }
+    public static void compareLineLength(String len1, String len2){
+        if (len1.equals(len2))
+            System.out.println("Both lines are of equal length.");
         else
-            System.out.println("Two lines are not equal.");
+            System.out.println("Both lines are of unequal lengths.");
     }
 }
