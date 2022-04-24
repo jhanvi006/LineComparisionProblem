@@ -19,6 +19,7 @@ class Point{
         double length = Math.sqrt((this.getX() - p.getX()) * (this.getX() - p.getX())
                 + (this.getY() - p.getY()) * (this.getY() - p.getY()));
         String lineLength = Double.toString(length);
+        System.out.println(lineLength);
         return lineLength;
     }
 }
@@ -29,7 +30,7 @@ public class LineEqualityCheck {
         Point p1 = new Point(1, 1);
         Point p2 = new Point(5, 5);
         Point p3 = new Point(2,2);
-        Point p4 = new Point(6,5);
+        Point p4 = new Point(6,6);
 
         //calculate length of line1 from point p1 to p2
         String length1 = p1.calculateLineLength(p2);
@@ -39,9 +40,11 @@ public class LineEqualityCheck {
         compareLineLength(length1, length2);
     }
     public static void compareLineLength(String len1, String len2){
-        if (len1.equals(len2))
+        if (len1.compareTo(len2)==0)
             System.out.println("Both lines are of equal length.");
+        else if (len1.compareTo(len2)>0)
+            System.out.println("Line1 is greater than line2.");
         else
-            System.out.println("Both lines are of unequal lengths.");
+            System.out.println("Line2 is greater than line1.");
     }
 }
